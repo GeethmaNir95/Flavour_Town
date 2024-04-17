@@ -11,6 +11,13 @@ session_start();
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>     
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link
+    href="https://fonts.googleapis.com/css2?family=Asar&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
     <title>Add Recipe</title>
     <style>
    body {
@@ -108,18 +115,18 @@ h3{
           <!-- Left links -->
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#" style="color:white;"><b>Featured</b></a>
+              <a class="nav-link active" aria-current="page" href="index.php" style="color:white;"><b>Home</b></a>
             </li>
 
           
               <!-- Dropdown menu -->
-
-             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" style="color:white;" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>All Recipes</b></a>
+              <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"  style=color:white; id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>All Recipes</b></a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="lunchRecipes.php"style=color:white;>Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="Breakfast-Recipes.php">Breakfast Recipes</a>
+              <a class="dropdown-item" href="lunch-Recipes.php">Lunch Recipes</a>
+              <a class="dropdown-item" href="Dinner-Recipes.php">Dinner Recipes</a>
+              <a class="dropdown-item" href="dessert-Recipes.php">Dessert Recipes</a>
             </div>
           </li>
             </li>

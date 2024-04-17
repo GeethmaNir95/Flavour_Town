@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once'connection.php';
 $category = "Category = 'Dinner'";
 $sql1 ="SELECT * FROM  recipemethod where $category";
@@ -16,8 +16,8 @@ $all_recipes = $conn->query($sql1);
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>     
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <title>Dinner Recipes</title>
     <style>
 
@@ -115,7 +115,7 @@ background-color: orange;
           <!-- Left links -->
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#" style="color:white;"><b>Featured</b></a>
+              <a class="nav-link active" aria-current="page" href="index.php" style="color:white;"><b>Home</b></a>
             </li>
 
           
@@ -190,17 +190,21 @@ background-color: orange;
          <?php 
 
          while($row =mysqli_fetch_assoc($all_recipes )){
-        
+         
+          
+         
         ?>
          <div class="col-sm">
-           <h4><?php  echo $row['RecipeName']; ?></h4>
-          <img src="./assets/CSS/images/Roast-Lamb.jpg" alt="roast lamb pic" width="350px" height="250px">
+           <h4><a href ="recipes.php?recipe_id=<?php echo $row['Recipe_Id']; ?>" style ="color:black;" ><?php echo $row['RecipeName']; ?><a></h4>
+          <img src= " ./assets/CSS/images<?php echo $row['file']; ?>" alt=" " width="350px" height="250px">
          </div>
          
       <?php
+
+       
       }
       ?>
-    
+      
     </main>
     
 </body>

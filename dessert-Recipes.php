@@ -116,7 +116,7 @@ background-color: orange;
           <!-- Left links -->
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#" style="color:white;"><b>Featured</b></a>
+              <a class="nav-link active" aria-current="page" href="index.php" style="color:white;"><b>Home</b></a>
             </li>
 
           

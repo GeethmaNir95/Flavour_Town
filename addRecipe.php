@@ -185,8 +185,9 @@ h3{
       $cusine = $_POST["cusine"];
       $ingredients = $_POST["Ingredients"];
       $directions = $_POST["Directions"];
+
      
-      
+          
   
  
   
@@ -209,11 +210,12 @@ h3{
             echo "Recipe uploaded successfully";
          
            }
-     }
-     else{
+         }
+
+          else{
  
-         die("Something went wrong.");
-     }
+             die("Something went wrong.");
+          }
  
      
      }

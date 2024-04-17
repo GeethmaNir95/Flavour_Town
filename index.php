@@ -133,10 +133,10 @@ session_start();
           </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" style=color:white;><b>Cooking Guide</b></a>
+              <a class="nav-link" href="CookingGuide.php" style=color:white;><b>Cooking Guide</b></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" style=color:white;><b>About</b></a>
+              <a class="nav-link" href="about.php" style=color:white;><b>About</b></a>
             </li>
             <?php 
 

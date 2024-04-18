@@ -1,21 +1,9 @@
-<?php 
-session_start();
-require_once'connection.php';
-$recipe_Id =  $_GET['recipe_id'] ;
-$recipe_info = "Recipe_id =".$recipe_Id;
-$sql1 ="SELECT * FROM  recipemethod where $recipe_info ";
-$all_recipes = $conn->query($sql1);
-$row =mysqli_fetch_assoc($all_recipes );
- 
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipes</title>
+    <title>Update Recipe</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -73,14 +61,6 @@ background-color: orange;
 }
 
 
-  .col-sm{
-   margin-left:50px;
-   margin-right:0px;
-   margin-top:10px;
-   
-   
-
-  }
   h4{
 
     padding-top:20px ;
@@ -89,52 +69,26 @@ background-color: orange;
   }
 
 
-  #recipe_main_image{
-
-    
-    margin-top:20px;
-    margin-bottom:100px;
-    max-width:350px;
-    margin-left:100px;
-    display: flex;
-  }
-
+ 
   .container{
-
+   
+    margin-top:150px;
+    margin-left:400px;
 
 
   }
-#recipe_main_image{
-float: left;
 
-}
 
-  #des1{
-   
-   
-    max-width: 700px;
-    margin-top:25px;
-    margin-right: 50px;
-    height:250px;
-  }
 
-  #des2{
-    
-    max-width: 700px;
-    margin-top:25px;
-    margin-right: 50px;
-    height:300px;
-}
 
 
     </style>
 
 </head>
 <body>
-<header>
-        
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light">
+    <header>
+         <!-- Navbar -->
+         <nav class="navbar navbar-expand-lg navbar-light">
           
           <div class="container-fluid">
                
@@ -204,38 +158,41 @@ float: left;
         </nav>
         <!-- Navbar -->
     
-        <!--header image-->
-           <div class = "container-fluid" id ="banner">
-             <h6>l</h6>
-          </div>
-    
-          <div class = "container"  >
-            <?php
+       
+</header> 
+<main>
+<?php
 
-            
-             
-             ?>
-             <h3><?php echo   $row['RecipeName'] ; ?></h3>
-             
-          </div>
-        </header>
-        <main>
-         <div class ="container"  id ="recipe_main_image">
-            <img src="./assets/CSS/images<?php echo $row['file']?>"  height =500px; width =500px; >
-        </div>
+include('connection.php');
+ 
+ $category=$_POST['category'];
+ $cuisine=$_POST['Cusine'];
+ $RecipeName=$_POST['RecipeName'];
+ $Ingredients=$_POST['Ingredients'];
+ $Directions=$_POST['Directions'];
 
-        </main>
-        <section>
-            <div class = "container" id ="des1">
-            <h5>Ingredients</h5>
-            <p><?php echo $row['Ingredients']; ?></P>
-            </div>
+ 
 
-            <div class = "container" id ="des2">
-            <h5>Description</h5>
-            <p><?php echo $row['Directions']; ?></P>
-            </div>
-         </section>
-    
+   
+    {   
+        $sql = "UPDATE recipemethod set cusine='$cuisine', category='$category',Ingredients='$Ingredients',Directions='$Directions' where RecipeName='$RecipeName'";
+        $result = mysqli_query($conn, $sql);
+
+        if($result)
+        {
+           ?> <div class = "container"><h4><?php echo "Recipe Updated Successfully!";?><h4></div>
+         
+         <?php
+        }
+        else
+        {
+            echo "Something Went Wrong!";
+            header("Location: editRecipe.html");
+        }
+    }
+   
+?>
+
+</main>  
 </body>
 </html>

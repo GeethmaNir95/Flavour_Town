@@ -155,7 +155,7 @@ body {
   
               }else{
   
-                $addRecipe = "#";
+                $addRecipe = "login.php";
               }
               ?>
               <li class="nav-item">

@@ -149,26 +149,32 @@ margin-left:100px;
                 <li class="nav-item">
                   <a class="nav-link" href="about.php" style=color:white;><b>About</b></a>
                 </li>
-                <?php 
-    
-                if(isset($_SESSION['chef_id'])){
-                   
-                  $addRecipe = "addRecipe.php";
-    
-                }else{
-    
-                  $addRecipe = "#";
-                }
-                ?>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo $addRecipe; ?>" style=color:white;><b>My Recipes</b></a>
-                </li>
-                <!-- <li class="nav-item">
-                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
-                    >Disabled</a
-                  >
-                </li>-->
-    
+              
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"  style=color:white; id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>My Recipes</b></a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="
+                <?php   if(isset($_SESSION['chef_id'])){
+
+                   $addRecipe = "addRecipe.php";
+                   echo $addRecipe;
+                        }else{
+
+                   $addRecipe = "login.php";
+                   echo $addRecipe;
+
+                       } ?>">Add Recipes</a>
+              <a class="dropdown-item" href="
+                <?php   if(isset($_SESSION['chef_id'])){
+
+                   $editRecipe = "editRecipe.php";
+                   echo $editRecipe;
+                        }else{
+
+                   $editRecipe = "login.php";
+                   echo $editRecipe;
+
+                       } ?>">Edit Recipes</a>
               </ul>
               <!-- Left links -->
             </div>

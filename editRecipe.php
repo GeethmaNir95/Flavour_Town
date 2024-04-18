@@ -1,11 +1,7 @@
 <?php 
 session_start();
 require_once'connection.php';
-$recipe_Id =  $_GET['recipe_id'] ;
-$recipe_info = "Recipe_id =".$recipe_Id;
-$sql1 ="SELECT * FROM  recipemethod where $recipe_info ";
-$all_recipes = $conn->query($sql1);
-$row =mysqli_fetch_assoc($all_recipes );
+
  
 
 ?>
@@ -100,31 +96,22 @@ background-color: orange;
   }
 
   .container{
-
+   
+    margin-top:50px;
 
 
   }
-#recipe_main_image{
-float: left;
-
+#btn{
+    background-color:black;
+    color:white;
 }
 
-  #des1{
-   
-   
-    max-width: 700px;
-    margin-top:25px;
-    margin-right: 50px;
-    height:250px;
-  }
-
-  #des2{
-    
-    max-width: 700px;
-    margin-top:25px;
-    margin-right: 50px;
-    height:300px;
+#btn2{
+    background-color:black;
+    color:white;
 }
+
+
 
 
     </style>
@@ -204,38 +191,89 @@ float: left;
         </nav>
         <!-- Navbar -->
     
-        <!--header image-->
-           <div class = "container-fluid" id ="banner">
-             <h6>l</h6>
-          </div>
-    
-          <div class = "container"  >
-            <?php
-
-            
-             
-             ?>
-             <h3><?php echo   $row['RecipeName'] ; ?></h3>
-             
-          </div>
+       
         </header>
         <main>
-         <div class ="container"  id ="recipe_main_image">
-            <img src="./assets/CSS/images<?php echo $row['file']?>"  height =500px; width =500px; >
-        </div>
-
-        </main>
-        <section>
-            <div class = "container" id ="des1">
-            <h5>Ingredients</h5>
-            <p><?php echo $row['Ingredients']; ?></P>
+        <div class ="container">
+            <h3>Manage all your Recipes</h3>
             </div>
+           
+    
+    <div class ="container">
+    <form method="post" action="editRecipe.php">
+        <label>Select the recipe to edit/delete</label>
+        <input type="text" name="RecipeName" />
+        <br><br>
+        <input id ="btn2" type="submit" name="submit" value="Search to edit" />
+        &nbsp;&nbsp;&nbsp;&nbsp;
+     </div>
+        
+    </form>
 
-            <div class = "container" id ="des2">
-            <h5>Description</h5>
-            <p><?php echo $row['Directions']; ?></P>
-            </div>
-         </section>
+        
+        <?php
+         if(isset($_POST["submit"])){
+
+            include('connection.php');
+          
+             $RecipeName=$_POST['RecipeName'];
+             $sql = "SELECT * FROM recipemethod WHERE RecipeName='$RecipeName'";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) 
+                    {
+                        $row = $result->fetch_assoc();
+                        
+                        
+                        $chef_id=$row["chef_id"];
+                        $category=$row["Category"];
+                        $cuisine=$row["Cusine"];
+                        $RecipeName=$row["RecipeName"];
+                        $Ingredients=$row["Ingredients"];
+                        $Directions=$row["Directions"];
+
+                        
+
+                         ?>
+                        
+                    <div class="container">
+                        <form method='post' action='updateRecipe.php'>
+                            
+                            
+                            <label><b>Recipe Name:</b>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <input type='text' name='RecipeName' value='<?php echo $RecipeName; ?>'/> <br><br>
+                            <label><b>Category:</b>&nbsp;&nbsp;</label>
+                            <input type='text' name='category' value='<?php echo $category ;?>'/> <br><br>
+                            <label><b>Cuisine:</b>&nbsp;&nbsp;&nbsp;</label>
+                            <input type='text' name='Cusine' value='<?php echo $cuisine ;?>'/> <br><br>
+                            <label><b>Ingredients:</b>&nbsp;&nbsp;&nbsp;</label>
+                            <textarea name='Ingredients' id='Ingredients' value=''  rows='5' cols='100'><?php echo $Ingredients;?>
+                           </textarea><br><br>
+                            <label><b>Directions:</b>&nbsp;&nbsp;&nbsp;</label>
+                            <textarea name='Directions' id='Directions' value='' rows='10' cols='100'><?php echo $Directions;?>
+                            </textarea><br><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input id= "btn" type='submit' name='submit' value='Submit' />
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        
+                        </form>
+                    </div>
+                        <?php
+                    }
+                    else 
+                    {
+                        echo " Not Found";
+                    }
+                    
+             
+
+            $conn->close();
+
+                }
+            ?>
+            
+      
+      </main>
     
 </body>
 </html>

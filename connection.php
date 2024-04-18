@@ -6,7 +6,7 @@ $username ="root";
 $password="";
 
 //create connection
-$conn = mysqli_connect("localhost","root","","flavour_town",3307);
+$conn = mysqli_connect("localhost","root","","flavour_town");
 
 //check connection
 
